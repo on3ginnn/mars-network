@@ -7,28 +7,40 @@ body{
     font-family: 'Ubuntu', sans-serif;
 }
 
-h1, h4{
-    margin-bottom: 20px;
-    padding-left: 20px;
-}
 h4{
     color: grey;
+    margin-top: 10px;
 }
 
-h1{
-    margin-top: 30px;
-}
 h2{
-    margin-top: 100px;
+    font-size: 20px;
     margin-left: 200px;
+}
+.h2_none_margin{
+    margin-left: 20px;
 }
 form{
     margin-left: 200px;
 }
+
+p{
+    margin-bottom: 30px;
+}
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: rgb(241, 241, 241);
+}
+.content{
+    margin-top: 150px;
+}
 .alert-danger{
     color: rgb(255, 84, 84);
 }
-input{
+.form-control{
     border: 1px gray solid;
     border-radius: 10px;
     font-size: 18px;
@@ -42,11 +54,100 @@ input{
     line-height: calc(24 / 22 * 100%);
     margin-top: 30px;
 }
+.authorization-header{
+    z-index: 10;
+    position: fixed;
+    right: 20px;
+    top: 30px;
+}
 .btn{
-    margin-top: 50px;
-    padding: 10px 0;
-    width: 150px;
+    transition: 0.2s all ease-out 0s;
+    border: none;
+    padding: 10px 20px;
     color: white;
     font-weight: 600;
+    border-radius: 100px;
     background: rgb(41, 141, 255);
+}
+.btn_modif{
+    display: inline-block;
+    text-decoration: none;
+
+}
+.btn-secondary{
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    background: rgb(49, 204, 204);
+}
+.btn-warning{
+    background: rgb(239, 241, 116);
+    color: rgb(53, 53, 53);
+}
+.btn-danger{
+    background-color:rgb(228, 34, 60);
+}
+.btn-register{
+    margin-right: 10px;
+}
+
+.btn-login{
+    background: rgb(92, 187, 92);
+}
+.btn:hover{
+    opacity: 0.7;
+    transform: scale(0.98);
+}
+.setting-panel{
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+}
+.setting-panel>*:not(:last-child){
+    margin-right: 10px;
+}
+.news{
+    padding: 8px;
+    margin: 10px 700px 10px 200px;
+    border: 1px rgb(199, 199, 199) solid;
+    background: rgb(243, 238, 238);
+    border-radius: 20px;
+}
+
+.news__subtitle{
+    display: flex;
+}
+.news__created-date{
+    margin-left: 10px;
+    color: gray;
+}
+.news__content{
+    margin-top: 10px;
+}
+.navbar-brand{
+    float: right;
+}
+
+.item{
+    margin: 20px;
+}
+table{
+    border-collapse: collapse;
+}
+tr{
+    padding: 10px 20px;
+    min-height: 50px;
+}
+th{
+    padding: 10px 20px;
+
+    min-height: 50px;
+    background: rgb(163, 163, 163);
+}
+td{
+    padding: 10px 20px;
+    background: rgb(152, 197, 255);
+}
+.red{
+    background: rgb(255, 179, 179);
 }
