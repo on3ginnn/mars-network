@@ -17,7 +17,7 @@ class Jobs(SqlAlchemyBase):
     end_date = sqlalchemy.Column(sqlalchemy.DateTime, nullable=True)
     is_finished = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
 
-    user = orm.relationship('User')
+    user = orm.relationship('User', foreign_keys=[team_leader])
 
 
 

@@ -100,7 +100,7 @@ p{
 }
 .setting-panel{
     display: flex;
-    justify-content: end;
+    /* justify-content: end; */
     margin-top: 10px;
 }
 .setting-panel>*:not(:last-child){
@@ -150,4 +150,7 @@ td{
 }
 .red{
     background: rgb(255, 179, 179);
+}
+.green{
+    background: rgb(153, 223, 153);
 }

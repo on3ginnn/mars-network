@@ -44,14 +44,24 @@
                             <th>List of collaborators</th>
                             <th>Is finished</th>
                         </tr>
-                        <tr class="content">
+                        <tr>
                             <td>{{ job.job }}</td>
                             <td>{{ job.user.surname }} {{ job.user.name }}</td>
                             <td>{{ job.work_size }} hours</td>
                             <td>{{ job.collaborators }}</td>
-                            <td class="red">{% if job.is_finished %} is finished {% else %} is not finished {% endif %}</td>
+                            <td class="{% if job.is_finished %} green {% else %} red {% endif %}">{% if job.is_finished %} is finished {% else %} is not finished {% endif %}</td>
                         </tr>
                     </table>
+                    {% if current_user.is_authenticated and (current_user.id == 1 or current_user.id == job.team_leader) %}
+                    <div class="setting-panel">
+                        <a href="/jobs/{{ job.id }}" class="btn btn-warning btn_modif">
+                            Изменить
+                        </a>
+                        <a href="/jobs_delete/{{ job.id }}" class="btn btn-danger btn_modif">
+                            Удалить
+                        </a>
+                    </div>
+                {% endif %}
                 </div>
                 {% endfor %}
             </div>
