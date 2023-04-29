@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1110px, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2? display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <title>
+        Profile
+    </title>
+</head>
+<body>
+    <main>
+        <div class="main__body _container">
+            {% extends "base.html" %}
+            {% block content %}
+            <div class="content">
+                <div class="user__avatar">
+                    {% if user.avatar %}
+                    <img src="../static/img/{{user.avatar}}" alt="">
+                    {% else %}
+                    <img src="../static/img/user_black.png" alt="">
+                    {% endif %}
+                </div>
+                <table class="data">
+                    <tr class="item">
+                        <td class="item__key">ID</td>
+                        <td class="item__value">{{user.id}}</td>
+                    </tr>
+                    <tr class="item">
+                        <td class="item__key">Фамилия</td>
+                        <td class="item__value">{{user.surname}}</td>
+                    </tr>
+                    <tr class="item">
+                        <td class="item__key">Имя</td>
+                        <td class="item__value">{{user.name}}</td>
+                    </tr>
+                    <tr class="item">
+                        <td class="item__key">Возраст</td>
+                        <td class="item__value">{{user.age}}</td>
+                    </tr>
+                    <tr class="item">
+                        <td class="item__key">Должность</td>
+                        <td class="item__value">{{user.position}}</td>
+                    </tr>
+                    <tr class="item">
+                        <td class="item__key">Специальность</td>
+                        <td class="item__value">{{user.speciality}}</td>
+                    </tr>
+                    <tr class="item">
+                        <td class="item__key">Адресс</td>
+
+                        <td class="item__value">{% if not user.address %} - {% else %} {{user.address}} {% endif %}</td>
+                    </tr>
+                    <tr class="item">
+                        <td class="item__key">Почта</td>
+                        <td class="item__value">{{user.email}}</td>
+                    </tr>
+                    <tr class="item">
+                        <td class="item__key">Последнее редактирование</td>
+                        <td class="item__value">{{user.modified_date}}</td>
+                    </tr>
+                </table>
+                <div class="news-is_authenticated">
+                    {% if current_user.is_authenticated and current_user == user %}
+                    <div class="btn_edit">
+                        <a class="btn btn-register btn_modif" href="/register//{{ user.id }}">Изменить</a>
+                        <a href="/logout" class="btn btn-danger btn_modif">Выйти</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endblock %}
+        </div>
+    </main>
+</body>
+</html>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru"> 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=1110px, initial-scale=1, shrink-to-fit=no">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2? display=swap" rel="stylesheet">
@@ -12,8 +12,28 @@
 </head>
 <body>
     <header class="header">
-        <h1>Миссия Колонизация Марса</h1>
-        <h4>И на Марсе будут яблони цвести!</h4>
+        <div class="header__body _container">
+            <a href="/">
+                <img width="100px" height="100px" src="../static/img/logo.jpg" alt="logo.jpg">
+            </a>
+            <nav class="authorization-header__panel">
+                {% if current_user.is_authenticated %}
+                    <nav class="navbar">
+                        <a class="navbar-brand" href="/profile">{{ current_user.surname }} {{ current_user.name }}</a>
+                        <div class="navbar__avatar">
+                            {% if current_user.avatar %}
+                            <img src="../static/img/{{ current_user.avatar }}" alt="">
+                            {% else %}
+                            <img src="../static/img/user.png" alt="">
+                            {% endif %}
+                        </div>
+                    </nav>
+                {% else %}
+                    <a class="btn btn-register btn_modif" href="/register">Зарегистрироваться</a>
+                    <a class="btn btn-login btn_modif" href="/login">Войти</a>
+                {% endif %}
+            </nav>
+        </div>
     </header>
     <main>
         {% block content %}{% endblock %}

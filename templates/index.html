@@ -1,66 +1,73 @@
 <!doctype html>
 <html lang="ru">
-    <head>
+    <head> 
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=1110px, initial-scale=1, shrink-to-fit=no">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2? display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="../static/css/style.css">
         <title>
-            index
+            Локальная сеть корабля "МАРС-3"
         </title>
     </head>
     <body>
-        <header class="authorization-header">
-            <nav class="authorization-header__panel">
-                {% if current_user.is_authenticated %}
-                    <a class="navbar-brand" href="/logout">{{ current_user.surname }} {{ current_user.name }}</a>
-                {% else %}
-                    <p>
-                        <a class="btn btn-register btn_modif" href="/register">Зарегистрироваться</a>
-                        <a class="btn btn-login btn_modif" href="/login">Войти</a>
-                    </p>
-                {% endif %}
-            </nav>
-        </header>
         <main>
-            {% extends "base.html" %}
+            <div class="main__body _container">
 
-            {% block content %}
-            <div class="content">
-                <h2>Записи в блоге</h2>
-                {% if current_user.is_authenticated %}
-                    <a href="news" class="btn btn-secondary btn_modif">Добавить новость</a>
-                {% endif %}
-                {% for item in news %}
-                    <div class="news">
-                        <div class="news__title">
-                            <h3>{{ item.title }}</h3>
-                        </div>
-                        <div class="news__subtitle">
-                            {{ item.user.name }} {{ item.user.surname }}
-                            <div class="news__created-date">
-                                {{ item.created_date }}
+                {% extends "base.html" %}
+
+                {% block content %}
+                <div class="content">
+                    <div class="content-box">
+                        <div class="content__add-news">
+                            <div class="add-news__window">
+                                {% if current_user.is_authenticated %}
+                                    <a href="news" class="btn btn-secondary btn_modif">Добавить новость</a>
+                                {% endif %}
                             </div>
                         </div>
-                        <div class="news__content">
-                            {{ item.content }}
-                        </div>
-                        {% if current_user.is_authenticated and current_user == item.user %}
-                            <div class="setting-panel">
-                                <a href="/news/{{ item.id }}" class="btn btn-warning btn_modif">
-                                    Изменить
-                                </a>
-                                <a href="/news_delete/{{ item.id }}" class="btn btn-danger btn_modif">
-                                    Удалить
-                                </a>
-                            </div>
-                        {% endif %}
+                        <ul class="news-lst">
+                            <h2>Новости корабля-марсохода "МАРС-3"</h2>
+                            {% for item in news %}
+                                <div class="news-lst__news">
+                                    <div class="news-content">
+                                        <div class="news-default">
+                                            <div class="news__title">
+                                                <h3>{{ item.title }}</h3>
+                                            </div>
+                                            <p class="news__content">
+                                                {{ item.content }}
+                                            </p>
+                                            <div class="news__subtitle">
+                                                <a href="/profile/{{ item.user.id}}" class="writer__news">
+                                                    {{ item.user.name }} {{ item.user.surname }}
+                                                </a>
+                                                <div class="news__created-date">
+                                                    {{ item.created_date }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="news-is_authenticated">
+                                            {% if current_user.is_authenticated and current_user == item.user %}
+                                            <div class="setting-panel">
+                                                <a href="/news/{{ item.id }}" class="btn btn-warning btn_modif">
+                                                    Изменить
+                                                </a>
+                                                <a href="/news_delete/{{ item.id }}" class="btn btn-danger btn_modif">
+                                                    Удалить
+                                                </a>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </ul>
                     </div>
-                {% endfor %}
+                </div>
+                {% endblock %}
             </div>
-            {% endblock %}
         </main>
     </body>
 </html>
