@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, abort, request
 from werkzeug.utils import secure_filename
 import os
-from data import db_session, jobs_api
+from data import db_session
 from data.users import User
 from data.news import News
 import datetime
